@@ -7,11 +7,13 @@ Source: https://sketchfab.com/3d-models/ipad-mini-6-2021-f363c2b1c74a462588db184
 Title: IPad Mini 6 2021
 */
 
-import React, { useRef } from 'react'
-import { Html, useGLTF } from '@react-three/drei'
+import React, { useEffect, useRef } from 'react'
+import { Box, Html, useGLTF } from '@react-three/drei'
+import { Canvas } from '@react-three/fiber'
 
 export function Model(props) {
   const { nodes, materials } = useGLTF('/ipad_mini_6_2021.glb')
+  const canvasRef = useRef(null)
   return (
     <group {...props} dispose={null}>
       <group position={[0, 0.033, -0.012]}>
@@ -28,10 +30,10 @@ export function Model(props) {
             <mesh geometry={nodes.iPad_Mini_CamBlack_0.geometry} material={materials.CamBlack} />
             <mesh geometry={nodes.iPad_Mini_Port_0.geometry} material={materials.Port} />
             <mesh geometry={nodes.iPad_Mini_Screen_0.geometry}>
-              <Html style={{ transform: 'rotateY(180deg)' }} position={[0, 0, -0.0001]}  className="content" transform occlude> 
-                  ㅎㅇ<br/>
-                  ㅎㅇ<br/>
-                  ㅎㅇ<br/>
+            <Html scale={0.1} style={{ transform: 'rotateY(180deg)', }} position={[0, 0, -0.0001]} className="content" transform occlude> 
+                <div className="wrapper" onPointerDown={(e) => e.stopPropagation()}>
+
+                </div>
               </Html>
             </mesh>
             <mesh geometry={nodes.iPad_Mini_Lens_0.geometry} material={materials.Lens} />
