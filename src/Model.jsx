@@ -21,7 +21,7 @@ export function Model(props) {
   
 
   const spring = useSpring({
-    rotation : open? [0,THREE.MathUtils.degToRad(180),0]: [0,THREE.MathUtils.degToRad(0),0],
+    rotation : open? [0,THREE.MathUtils.degToRad(0),0]: [0,THREE.MathUtils.degToRad(0),0],
     position : button? [-0.315,-0.01,0.017]:[-0.32,-0.01,0.017],
     config: { friction: 11 }
   })
