@@ -7,20 +7,34 @@ Source: https://sketchfab.com/3d-models/ipad-mini-6-2021-f363c2b1c74a462588db184
 Title: IPad Mini 6 2021
 */
 
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Box, Html, useGLTF } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
+import { useSpring, animated } from '@react-spring/three'
+import * as THREE from 'three'
 
 export function Model(props) {
   const { nodes, materials } = useGLTF('/ipad_mini_6_2021.glb')
-  const canvasRef = useRef(null)
+  const [open, setOpen]=useState(false)
+  const [button, setButton]=useState(false)
+  const [on,setOn]=useState(false)
+  
+
+  const spring = useSpring({
+    rotation : open? [0,THREE.MathUtils.degToRad(180),0]: [0,THREE.MathUtils.degToRad(0),0],
+    position : button? [-0.315,-0.01,0.017]:[-0.32,-0.01,0.017],
+    config: { friction: 11 }
+  })
+
+  console.log(open)
+
   return (
-    <group {...props} dispose={null}>
+    <animated.group rotation={spring.rotation} {...props} dispose={null}>
       <group position={[0, 0.033, -0.012]}>
         <group rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
-          <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+          <group onPointerDown={(e) => {setOpen(!open)}} rotation={[-Math.PI / 2, 0, 0]} scale={100}>
             <mesh geometry={nodes.iPad_Mini_BaseColor_0.geometry} material={materials.BaseColor} />
-            <mesh geometry={nodes.iPad_Mini_BaseColorMatte_0.geometry} material={materials.BaseColorMatte} />
+            <mesh geometry={nodes.iPad_Mini_BaseColorMatte_0.geometry} material={materials.BaseColorMatte}/>
             <mesh geometry={nodes.iPad_Mini_CamGray_0.geometry} material={materials.CamGray} />
             <mesh geometry={nodes.iPad_Mini_SpeakerMic_0.geometry} material={materials.SpeakerMic} />
             <mesh geometry={nodes.iPad_Mini_Flash_0.geometry} material={materials.Flash} />
@@ -30,18 +44,44 @@ export function Model(props) {
             <mesh geometry={nodes.iPad_Mini_CamBlack_0.geometry} material={materials.CamBlack} />
             <mesh geometry={nodes.iPad_Mini_Port_0.geometry} material={materials.Port} />
             <mesh geometry={nodes.iPad_Mini_Screen_0.geometry}>
-            <Html scale={0.1} style={{ transform: 'rotateY(180deg)', }} position={[0, 0, -0.0001]} className="content" transform occlude> 
-                <div className="wrapper" onPointerDown={(e) => e.stopPropagation()}>
-
-                </div>
-              </Html>
+              <meshStandardMaterial color={'black'}/>
+              {on? <Screen/>:null}
             </mesh>
             <mesh geometry={nodes.iPad_Mini_Lens_0.geometry} material={materials.Lens} />
             <mesh geometry={nodes.iPad_Mini_BaseColorLogo_0.geometry} material={materials.BaseColorLogo} />
           </group>
+          <group rotation={[-Math.PI / 2, 0, 0]} scale={100}>
+            <animated.mesh onPointerDown={(e) => {setButton(true); setOn(!on)}} onPointerUp={(e) => {setButton(false)}} onPointerOut={(e) => {setButton(false)}} material={materials.BaseColorMatte} position={spring.position}>
+                <boxGeometry args={[0.06,0.14,0.025]}/>
+              </animated.mesh>
+          </group>
         </group>
       </group>
-    </group>
+    </animated.group>
+  )
+}
+
+function Screen(){
+  return(
+    <Html scale={0.1} style={{ transform: 'rotateY(180deg)', backgroundColor:"white"}} position={[0, 0, -0.0001]} className="content" transform occlude> 
+    <div className="wrapper" onPointerDown={(e) => e.stopPropagation()}>
+      <header>
+        <div className='head'>O_O</div>
+        <div className='head_text'>
+          <div>홈</div>
+          <div>디테일1</div>
+          <div>디테일2</div>
+        </div>
+      </header>
+      <div style={{width:"100%", height:"40px"}}/>
+      <main className='main'>
+        대강 개쩌는 홈페이지
+        <img width={200} src="https://img.danawa.com/prod_img/500000/705/038/img/18038705_2.jpg?_v=20221117131636" alt="" />
+        <img width={200} src="https://cdn.thelec.kr/news/photo/201907/2297_2261_1342.jpeg" alt="" />
+        <img width={200} src="https://img.hankyung.com/photo/202210/01.31561543.1.jpg" alt="" />
+      </main>
+    </div>
+  </Html>
   )
 }
 

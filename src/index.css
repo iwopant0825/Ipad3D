@@ -32,3 +32,31 @@ canvas{
   transform-origin: top left;
 }
 
+header{
+  width: 100%;
+  position: fixed;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  background-color: rgb(111, 188, 255);
+  padding: 14px;
+  height: 40px;
+}
+.head_text{
+  font-size: 12px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.main{
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px;
+}
+
+img{
+  margin-bottom: 10px;
+}
