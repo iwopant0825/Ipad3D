@@ -63,9 +63,9 @@ export function Model(props) {
 
 function Screen(){
   return(
-    <Html scale={0.1} style={{ transform: 'rotateY(180deg)', backgroundColor:"white"}} position={[0, 0, -0.0001]} className="content" transform occlude> 
+    <Html scale={0.03} style={{ transform: 'rotateY(180deg)', backgroundColor:"white"}} position={[0, 0, -0.0001]} className="content" transform occlude> 
     <div className="wrapper" onPointerDown={(e) => e.stopPropagation()}>
-      <header>
+      {/* <header>
         <div className='head'>O_O</div>
         <div className='head_text'>
           <div>홈</div>
@@ -79,7 +79,8 @@ function Screen(){
         <img width={200} src="https://img.danawa.com/prod_img/500000/705/038/img/18038705_2.jpg?_v=20221117131636" alt="" />
         <img width={200} src="https://cdn.thelec.kr/news/photo/201907/2297_2261_1342.jpeg" alt="" />
         <img width={200} src="https://img.hankyung.com/photo/202210/01.31561543.1.jpg" alt="" />
-      </main>
+      </main> */}
+      <iframe src='https://tapie.kr/' style={{width:"100%", height:"100%"}}></iframe>
     </div>
   </Html>
   )

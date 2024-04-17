@@ -15,8 +15,8 @@ canvas{
 .content {
   position: relative;
   top:5px;
-  width: 240px;
-  height: 360px;
+  width: 820px;
+  height: 1180px;
   border-radius: 10px;
   background-color: #ffffffb6;
   overflow-y: auto;
@@ -26,8 +26,8 @@ canvas{
 .wrapper {
   margin: 0;
   padding: 0;
-  width: 240px;
-  height: 360px;
+  width: 820px;
+  height: 1180px;
   font-size: 14px;
   transform-origin: top left;
 }
