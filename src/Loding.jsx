@@ -6,7 +6,7 @@ const override = {
   alignItems: "center",
   height: "100vh",
   backgroundColor: "#202020"
-};
+}
 
 export default function Loading() {
   return (

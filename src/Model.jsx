@@ -18,7 +18,6 @@ export function Model(props) {
   const [open, setOpen]=useState(false)
   const [button, setButton]=useState(false)
   const [on,setOn]=useState(false)
-  
 
   const spring = useSpring({
     rotation : open? [0,THREE.MathUtils.degToRad(0),0]: [0,THREE.MathUtils.degToRad(0),0],
