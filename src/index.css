@@ -28,7 +28,7 @@ canvas{
   padding: 0;
   width: 820px;
   height: 1180px;
-  font-size: 14px;
+  font-size: 40px;
   transform-origin: top left;
 }
 
@@ -40,10 +40,10 @@ header{
   align-items: center;
   background-color: rgb(111, 188, 255);
   padding: 14px;
-  height: 40px;
+  height: 100px;
 }
 .head_text{
-  font-size: 12px;
+  font-size: 30px;
   display: flex;
   flex-direction: row;
   gap: 10px;

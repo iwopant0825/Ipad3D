@@ -73,14 +73,14 @@ function Screen(){
           <div>디테일2</div>
         </div>
       </header>
-      <div style={{width:"100%", height:"40px"}}/>
+      <div style={{width:"100%", height:"140px"}}/>
       <main className='main'>
         대강 개쩌는 홈페이지
-        <img width={200} src="https://img.danawa.com/prod_img/500000/705/038/img/18038705_2.jpg?_v=20221117131636" alt="" />
-        <img width={200} src="https://cdn.thelec.kr/news/photo/201907/2297_2261_1342.jpeg" alt="" />
-        <img width={200} src="https://img.hankyung.com/photo/202210/01.31561543.1.jpg" alt="" />
+        <img width={500} src="https://img.danawa.com/prod_img/500000/705/038/img/18038705_2.jpg?_v=20221117131636" alt="" />
+        <img width={500} src="https://cdn.thelec.kr/news/photo/201907/2297_2261_1342.jpeg" alt="" />
+        <img width={500} src="https://img.hankyung.com/photo/202210/01.31561543.1.jpg" alt="" />
       </main> */}
-      <iframe src='https://tapie.kr/' style={{width:"100%", height:"100%"}}></iframe>
+      <iframe sandbox src='https://macbook3d.pages.dev' style={{width:"100%", height:"100%"}}></iframe>
     </div>
   </Html>
   )
